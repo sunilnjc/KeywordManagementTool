@@ -1,0 +1,188 @@
+@CHARSET "UTF-8";
+
+.header {
+	height: 50px;
+	background-color: #c6d9f1;
+	width: 100%;
+	position: absolute;
+	left: 0;
+	top: 0;
+	bottom: 0;
+	right: 0;
+	min-width: 975px;
+}
+
+.table-header-title {
+	width: 100%;
+	min-width: 975px;
+	position: absolute;
+	left: 0;
+	top: 100px;
+	min-width: 975px;
+}
+
+body {
+	font-family: "Meiryo UI";
+}
+
+.title-bar {
+	margin-left: 50px;
+	min-width: 925px;
+}
+
+.scr-icon {
+	display: inline;
+}
+
+img {
+	vertical-align: top;
+	padding-top: 8px;
+}
+
+.scr-name {
+	display: inline;
+	margin-left: 10px;
+	color: #1f497d;
+	font-weight: normal;
+	font-size: 20pt;
+}
+
+.usr-info {
+	display: inline;
+	width: 20%;
+	float: right
+}
+
+.usr-name {
+	height: 50%;
+}
+
+.usr-name-label {
+	width: 80px;
+	display: inline-block;
+	text-align: right;
+	font-size: 10pt;
+	color: #7f7f7f;
+	vertical-align: middle;
+	height: 15px !important;
+	background-color: #c6d9f1;
+}
+
+.usr-name-input {
+	color: #404040;
+	font-size: 10pt;
+	padding: 0px;
+	display: inline-block;
+	height: 15px !important;
+	background-color: #c6d9f1;
+}
+
+.container {
+	height: auto;
+	width: 100%;
+	min-width: 975px;
+	margin-left: 0px;
+	padding-right: 0;
+	overflow: auto;
+	top: 50px;
+	bottom: 50px;
+	position: absolute;
+}
+
+.menu-icon {
+	padding-left: 20px;
+	height: 100%;
+	min-height: 600px;
+}
+
+.footer {
+	background-color: #C6D9F1;
+	height: 50px;
+	width: 100%;
+	position: absolute;
+	left: 0;
+	bottom: 0;
+	min-width: 975px;
+}
+
+.logout-button {
+	background-color: #1F497D;
+	color: white;
+	height: 27px;
+	width: 120px;
+	margin-right: 16px;
+	padding: 2px;
+	text-align: center;
+	display: inline;
+	font-size: 12pt;
+	vertical-align: middle;
+	float: right;
+	margin-bottom: 50px;
+}
+
+.button-div {
+	padding: 11.5px;
+	min-width: 975px;
+}
+
+.button {
+	background-color: #1F497D;
+	/* To add button common properties here*/
+}
+
+button:hover, button:focus {
+	background-color: #778fac !important;
+	color: black !important;
+	border-color: #95b3d7 !important;
+}
+
+.tagid-input {
+	height: 28px;
+}
+
+.tooltipstest {
+	margin-top: 90px;
+}
+
+.updateuser {
+	display: flex;
+	justify-content: center;
+	height: 100%;
+	margin-top: 300px;
+}
+
+.btn_updateuser .btn {
+	display: flex;
+	align-items: center;
+}
+
+body {
+	overflow-x: auto;
+	overflow-y: hidden;
+}
+
+.menu-row {
+	width: 100%;
+	height: 9.25%;
+	display: block;
+}
+
+.menu-column {
+	width: 18%;
+	height: 100%;
+	display: inline-block;
+}
+
+.menu-button {
+	display: inline-block;
+	background-color: #1F497D;
+	color: white;
+	height: 50%;
+	width: 100%;
+	min-height: 35px;
+	min-width: 150px;
+	padding: 2px;
+	text-align: center;
+	font-size: 12pt;
+	vertical-align: middle;
+}

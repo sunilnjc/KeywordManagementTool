@@ -1,0 +1,65 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<div class="modal fade" id="tagListModal" data-backdrop="static"
+	data-keyboard="false" role="dialog" th:fragment="tagList_Fragment">
+	<div class="modal-dialog">
+
+		<!-- Modal content-->
+		<div class="modal-content">
+			<div class="modal-header" id="modal-header-tag"
+				style="display: flex;">
+				<nav class="navbar navbar-default navbar">
+					<div class="container-fluid">
+						<div class="navbar-header">
+							<img class="logo" src="/images/logo.jpg"> <label
+								class="title-taglist">タグ一覧</label>							
+						</div>
+					</div>
+				</nav>
+			</div>
+
+			<div class="tagtable-header">
+				<table class="tag-table-header" style="width: 100%;">
+					<tbody>
+						<tr class="tag">
+							<td class="table-radio"></td>
+							<td class="table-tagid">タグID</td>
+							<td class="table-orderid">タグ順序</td>
+							<td class="table-japanesetag">日本語タグ名</td>
+							<td class="table-englishtag">英語タグ名</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+
+
+			<div class="modal-body taglist-modal-body">
+				<div class="container-tag">
+					<table class="tagtable" id="tagtable">
+						<tbody id='tableBody'>							
+						</tbody>
+					</table>
+				</div>
+			</div>
+			<div class="modal-footer">
+				<div class="row-button">					
+					<button class='btn btn-primary select-button-tag' type="submit"
+						th:classappend="${searchDataNotExists}?'button-disabled':''" id="selected"
+						onclick="selectTagDataModel()">選択</button>
+					<div id="pg_tag-table" class="pagination-tag-div"></div>	
+					<button class='btn btn-primary register-button-tag'
+						data-toggle="modal" data-target="#myModal-tagdata"
+						onclick="callTagDataModel()" id="registerbutton">新規登録</button>
+
+					<button class='btn btn-primary update-button-tag'
+						onclick="callTagDataUpdateModel()" type="submit">更新</button>
+					<button class='btn btn-primary close-button-tag'
+						onclick="closeTagListModel()" type="submit">終了</button>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div th:replace="form/tagdata :: tagData_Fragment"></div>
+</html>

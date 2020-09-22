@@ -1,0 +1,60 @@
+<!-- COPYRIGHT 2018 FUJITSU
+Author : FCIPL
+Date : 2018/08/13 -->
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="stylesheet" type="text/css" href="css/glossarydata.css" />
+<link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+<script src="/js/postglossarydata.js"></script>
+
+<style type="text/css">
+</style>
+
+</head>
+<body>
+
+	<div class="" th:fragment="headerWithMenu">
+		<div class="container-fluid">
+			<div id="header11">
+
+				<div>
+
+					<div class="logo-glossarydata"
+						style="padding-left: 10px; font: normal 25px Meiryo UI;">
+						<img class="logo" src="/images/logo.jpg" /> &nbsp;&nbsp;用語登録・更新
+					</div>
+					<div class="username" style="padding-top: 15px;">
+
+						<label class="userLabel">ユーザー名</label>:&nbsp;&nbsp;<label
+							class="label label-default usr-name-input"
+							th:text="${session.userName}"></label>
+
+					</div>
+				</div>
+			</div>
+
+		</div>
+
+	</div>
+	<div id="headerText" style="padding-top: 7px;" th:fragment="headertext">
+		<div class="row">
+			<div class="glossaryid">
+				<label class="termID" style="color: #b4b5b5;">用語ID</label> <input
+					type="text" class="baseitemid" disabled id="termId" value="1"></input>
+			</div>
+
+			<div class="glossaryid" style="margin-left: 140px;">
+				<label class="termID" style="color: #b4b5b5;">基本データ項目ID</label> <input
+					type="text" class="baseitemid" disabled id="baseId" value="0"></input>
+			</div>
+		</div>
+	</div>
+
+
+
+</body>
+</html>

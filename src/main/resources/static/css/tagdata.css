@@ -1,0 +1,326 @@
+@CHARSET "UTF-8";
+
+.navbar-header {
+	height: 40px;
+	-webkit-border-top-left-radius: 5px;
+	-webkit-border-top-right-radius: 5px;
+	-moz-border-radius-topleft: 5px;
+	-moz-border-radius-topright: 5px;
+	border-top-left-radius: 5px;
+	border-top-right-radius: 5px;
+	text-align: center;
+	vertical-align: middle;
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	right: 0px;
+	font: normal 16px Meiryo UI !important;
+}
+
+.navbar-default {
+	background-color: #c6d9f1 !important;
+}
+
+.container-tag {
+	font: normal 16px Meiryo UI !important;
+	height: auto;
+	width: 100%;
+	min-width: 850px !important;
+	margin-left: 0px;
+	position: absolute;
+	min-width: 975px;
+	max-width: 100%;
+}
+
+.title-taglist {
+	left: -20px;
+	margin-top: -11px;
+	width: 353%;
+	position: absolute;
+	font-size: x-large;
+	font-weight: 100;
+	margin-left: 22px;
+	font: normal 30px Meiryo UI !important;
+	color: #1f497d !important;
+	margin-top: 0px;
+}
+
+.title-tagdata {
+	left: 24px;
+	margin-top: -11px;
+	width: 353%;
+	position: absolute;
+	font-size: x-large;
+	font-weight: 100;
+	margin-left: 22px;
+	font: normal 30px Meiryo UI !important;
+	color: #1f497d !important;
+	margin-top: -2px;
+}
+
+.logo-tagdata {
+	left: -20px;
+	position: absolute;
+	margin: -1px 40px;
+}
+
+.tag {
+	background-color: #1f497d;
+	width: 100px;
+	height: 30px;
+	text-align: center;
+	line-height: 30 px;
+	color: white;
+	padding-top: 4px;
+	font: normal 16px Meiryo UI !important;
+}
+
+.select-button-tag .close-button-tag .register-button-tag .update-button-tag
+	{
+	font: normal 16px Meiryo UI !important;
+	color: #fff;
+	width: 120px;
+	height: 30px;
+}
+
+.select-button-tag {
+	float: left;
+	width: 75px;
+}
+
+.save-button-reg {
+	width: 11%;
+	height: 34px;
+	margin-right: 773px;
+}
+
+.btn-primary {
+	background-color: #1f497d !important;
+}
+
+.btn-primary:hover .btn-primary:focus {
+	background-color: #778fac !important;
+	color: black !important;
+	border-color: #95b3d7 !important;
+}
+
+.update-button-tag {
+	width: 75px;
+}
+
+.close-button-tag {
+	width: 75px;
+	margin-left: 20px;
+}
+
+.close-button-reg {
+	float: right;
+	margin-bottom: -18px;
+	margin-top: -33px;
+	margin-right: 386px;
+	width: 10%;
+	height: 34px;
+}
+
+.register-button-tag {
+	margin-right: 9px;
+	margin-left: 459px;
+}
+
+}
+@media ( min-width : 992px) {
+	.col-md-2 {
+		width: 9.666667%;
+	}
+}
+
+.refresh {
+	width: 27px;
+	height: 28px;
+	display: flex;
+	padding: 1px;
+}
+
+/* Taglist table */
+tr:nth-child(even) {
+	background-color: #f2f2f2;
+	border: 4px solid #fff;
+}
+
+.tagtable {
+	border-collapse: separate;
+	width: 100%;
+}
+
+.navbar {
+	margin: 0px;
+	margin-bottom: 5px;
+	margin: -8px;
+}
+
+.button-div {
+	
+}
+
+.pagination-tag-div {
+	position: absolute;
+	left: 230px;
+	width: 200px;
+}
+
+.nav-button {
+	background-color: #1f497d;
+	color: white;
+	width: 40px;
+	display: inline-block;
+}
+
+button:hover, button:focus {
+	background-color: #778fac !important;
+	color: black !important;
+	border-color: #95b3d7 !important;
+}
+
+.modal-content {
+	width: 171%;
+	height: 464px;
+	right: 35%;
+	top: 103px;
+}
+
+.tagdata-content {
+	width: 171%;
+	height: 464px;
+	right: 25%;
+	top: 50px;
+}
+
+#glossary-data-id {
+	top: 15px;
+	height: 94vh;
+	width: 160%;
+	height: 94vh;
+}
+
+#modal-header-tag {
+	background-color: #c6d9f1;
+	height: 12%;
+}
+
+#modal-header-glossary {
+	background-color: #C6D9F1;
+	height: 60px;
+	position: absolute;
+	width: 100%;
+	left: 0;
+	top: 0;
+	bottom: 0;
+	right: 0;
+}
+
+.taglist-modal-body {
+	padding: 0rem;
+	width: 100%;
+	top: 87px;
+	/* height: auto;
+	overflow-y: auto; */
+	height: auto;
+	position: absolute;
+	bottom: 50px;
+}
+
+.tagdata-modal-body {
+	top: 0px;
+}
+
+#tag_Id {
+	width: 200px;
+}
+
+#tagOrder_Id {
+	width: 200px;
+}
+
+#japaneseTag {
+	width: 355px;
+}
+
+#englishTag {
+	width: 355px;
+}
+
+#japaneseTagErr, #englishTagErr {
+	color: red;
+	margin-left: 475px;
+	margin-top: -36px;
+}
+
+.modal-footer {
+	background-color: #c6d9f1;
+	height: 58px;
+	bottom: 0;
+	left: 0;
+}
+
+table, th, td, tr {
+	border: 1px solid #a6a6a6 !important;
+	font: normal 18px Meiryo UI !important;
+	vertical-align: top;
+}
+
+.row-button {
+	display: flex;
+	width: 100%;
+	height: 37px;
+	left: 0;
+	width: 100%;
+}
+
+.div-button {
+	diplay: inline-block;
+	width: 50px;
+}
+
+.tagrow {
+	margin-top: 7px;
+}
+
+.close-button-tagdata {
+	position: relative;
+	right: 363px;
+}
+
+.save-button-tagdata {
+	position: absolute;
+	left: 18px;
+}
+
+.table-radio {
+	width: 45.3333px !important;
+}
+
+.table-tagid, .table-orderid {
+	width: 86.4445px !important;
+}
+
+.table-japanesetag, .table-englishtag {
+	width: 316.667px !important;
+}
+
+.taginputs {
+	    margin-left: 15px;
+	    display: flex;
+}
+
+.hidden{display:none;}
+
+.error{
+	color: red;
+}
+
+#errorvalid_japaneseTag, #errorvalid_englishTag{
+	color: red;
+}
+.focused{
+	border-color: red !important;
+}

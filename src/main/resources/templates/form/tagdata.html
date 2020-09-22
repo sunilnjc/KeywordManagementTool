@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<div class="container">
+
+	<!-- Modal -->
+	<div class="modal fade" id="tagdataModal" data-backdrop="static"
+		data-keyboard="false" role="dialog" th:fragment="tagData_Fragment">
+		<div class="modal-dialog">
+
+			<form id="tagRegisterForm"  name="tagRegistration">
+				<!-- Modal content-->
+				<div class="modal-content tagdata-content" style="height: 410px">
+					<div class="modal-header" id="modal-header-tag">
+						<nav class="navbar navbar-default">
+							<div class="container-fluid">
+								<div class="navbar-header">
+									<img class="logo-tagdata" src="/images/logo.jpg"> <label
+										class="title-tagdata">タグ登録・更新</label>
+								</div>
+							</div>
+						</nav>
+					</div>
+
+					<div class="modal-body tagdata-modal-body">
+
+						<div class="container-fluid">
+
+							<div class="row tagrow">
+								<div class="taglabels ">
+									<label class="tag">タグID</label>
+								</div>
+								<div class= "taginputs">
+									<input type="text" class="form-control" id="tag_Id" disabled />
+								</div>
+							</div>
+							<div class="row tagrow">
+								<div class="taglabels">
+									<label class="tag">タグ順序</label>
+								</div>
+								<div class= "taginputs">
+									<input type="text"  class="form-control" id="tagOrder_Id"></input>
+								</div>
+							</div>
+							<div class="row tagrow">
+								<div class="taglabels">
+									<label class="tag" id="japanesetag_Id_label">日本語タグ名</label>
+								</div>
+								<div class= "taginputs checkDirtyTag">
+									<input type="text"  class="form-control" name="japanesetag_Id" id="japaneseTag"  onkeyup="japaneseLabelValidation()" maxlength="16"></input>
+								</div>								
+							</div>
+							<div class="row tagrow">
+								<div class="taglabels">
+									<label class="tag" id="englishtag_Id_label">英語タグ名</label>
+								</div>
+								<div class= "taginputs checkDirtyTag">
+									<input type="text" class="form-control" name="englishtag_Id" id="englishTag" onkeyup="englishLabelValidation()" maxlength="32"></input>
+								</div>								
+							</div>
+
+
+						</div>
+					</div>
+					<div class="modal-footer">
+						<div class="buttons">
+							<button type="submit" class='btn btn-primary save-button-tagdata'>保存</button>
+							<button class='btn btn-primary close-button-tagdata'
+								type="button">終了</button>
+						</div>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
+</html>

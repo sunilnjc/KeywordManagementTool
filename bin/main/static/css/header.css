@@ -1,0 +1,88 @@
+.navbar-inverse .navbar-collapse, .navbar-inverse .navbar-form {
+	background-color: #C6D9F1 !important;
+}
+
+.navbar .navbar-inverse .navbar-fixed-top {
+	background-color: #C6D9F1;
+}
+
+.navbar-fixed-top {
+	height: 10px;
+}
+
+.navbar-default {
+	background-color: #C6D9F1 !important;
+}
+
+.navbar-inverse {
+	background-color: #C6D9F1 !important;
+}
+
+.navbar-inverse .navbar-text {
+	color: #1f497d !important;
+	font: normal 30px Meiryo UI !important;
+}
+
+.username-input {
+	/* height: 30px; */
+	margin-left: 10px;
+	height: 32px;
+	border-radius: 5px;
+}
+
+.termID {
+	background-color: #1f497d;
+	width: 145px;
+	/* padding: 10px; */
+	text-align: center;
+	line-height: 30 px;
+	color: white;
+	padding: 4px;
+	font: normal 17px Meiryo UI !important;
+}
+
+.datefield {
+	background-color: #1f497d;
+	width: 145px;
+	text-align: center;
+	line-height: 30 px;
+	color: #b4b5b5;
+	padding-top: 1px;
+	font: normal 17px Meiryo UI !important;
+}
+
+.userLabel {
+	font: normal 17px Meiryo UI !important;
+	color: #666b6b;
+}
+
+.username {
+	display: flex;
+	align-items: center;
+	position: relative;
+	left: 600px;
+}
+
+.username-div {
+	display: flex;
+	margin: 62px 0px 6px 0px;
+}
+
+.logo {
+	position: relative;
+	top: 21px;
+}
+
+.navbar-fixed-bottom, .navbar-fixed-top {
+	position: relative !important;
+	border-width: 0 0 0px !important
+}
+
+.usr-name-input {
+	color: #404040;
+	font-size: 10pt;
+	padding: 0px;
+	display: inline-block;
+	height: 15px !important;
+	background-color: #c6d9f1;
+}

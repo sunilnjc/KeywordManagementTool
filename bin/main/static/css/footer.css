@@ -1,0 +1,15 @@
+.termID {
+	background-color: #1f497d;
+	width: 145px;
+	height: 30px; /* padding: 10px; */
+	text-align: center;
+	line-height: 30 px;
+	padding-left: 10px;
+	padding-right: 10px;
+	color: white;
+	padding-top: 4px;
+}
+
+/* .date {
+	display: flex
+} */

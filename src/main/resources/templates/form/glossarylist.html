@@ -1,0 +1,664 @@
+<!-- COPYRIGHT 2018 FUJITSU
+Author : FCIPL
+Date : 2018/08/02 -->
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<script type="text/javascript" charset="UTF-8"
+	src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+<script type="text/javascript" charset="UTF-8" src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.17.0/jquery.validate.min.js"></script>
+<script src="/js/postglossarydata.js"></script>
+<script src="/js/model-dialog.taginfo.js"></script>
+<script src="/js/ajaxUtil.js"></script>
+<script src="/js/tagdata.js"></script>
+<script src="/js/pagination-tag.js"></script>
+<link rel="stylesheet" type="text/css" href="/css/glossarydata.css" />
+<link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" />
+<link rel="stylesheet" type="text/css" href="/css/tagdata.css" />
+<link rel="stylesheet" type="text/css" href="/css/glossarylist.css" />
+
+
+<title>用語一覧</title>
+</head>
+<body>
+
+	<div class="header" id='header'>
+		<div class='title-bar'>
+			<div class='scr-icon'>
+				<img src='/images/logo.jpg' />
+			</div>
+			<div class='scr-name'>用語一覧</div>
+			<div class='usr-info'>
+				<div class='usr-name'>
+					<label class='label label-default usr-name-label'>ユーザー名:</label> <label
+						class='label label-default usr-name-input'
+						th:text="${session.userName}"></label>
+				</div>
+				<div class='usr-locale'>
+					<label class='label label-default locale-label'>ロケール:</label>
+					<form style="display: inline-block"
+						th:action="@{/glossarylist/locale}" method="get">
+						<select name='selected' class='form-control locale-dropdown'
+							onchange="this.form.submit()">
+							<option th:value='en' th:text="en"
+								th:selected="${session.usrLocale == 'en'}"></option>
+							<option th:value='ja' th:text="ja"
+								th:selected="${session.usrLocale == 'ja'}"></option>
+						</select>
+					</form>
+				</div>
+			</div>
+		</div>
+		<div class="filter">
+			<table class='filter-table'>
+				<tbody>
+					<tr>
+						<td width=2%><label class='label label-default filter-label'
+							for="glossaryLabel">フィルター</label></td>
+						<td width=13%><form style="display: inline-block"
+								th:action="@{/glossarylist/filter}" method="get">
+								<input class="form-control filter-input" type="text" name="key"
+									th:value="*{key}"> <input type='hidden' name="btnevnt"
+									th:value="false">	
+							</form></td>
+						<td width=5%><a
+							th:href="@{/glossarylist/filter(key=あ, btnevnt=true)}"
+							class="form-control filter-button filter-button-ja">あ</a></td>
+						<td width=5%><a
+							th:href="@{/glossarylist/filter(key=か, btnevnt=true)}"
+							class="form-control filter-button filter-button-ja">か</a></td>
+						<td width=5%><a
+							th:href="@{/glossarylist/filter(key=さ, btnevnt=true)}"
+							class="form-control filter-button filter-button-ja">さ</a></td>
+						<td width=5%><a
+							th:href="@{/glossarylist/filter(key=た, btnevnt=true)}"
+							class="form-control filter-button filter-button-ja">た</a></td>
+						<td width=5%><a
+							th:href="@{/glossarylist/filter(key=な, btnevnt=true)}"
+							class="form-control filter-button filter-button-ja">な</a></td>
+						<td width=5%><a
+							th:href="@{/glossarylist/filter(key=は, btnevnt=true)}"
+							class="form-control filter-button filter-button-ja">は</a></td>
+						<td width=5%><a
+							th:href="@{/glossarylist/filter(key=ま, btnevnt=true)}"
+							class="form-control filter-button filter-button-ja">ま</a></td>
+						<td width=5%><a
+							th:href="@{/glossarylist/filter(key=や, btnevnt=true)}"
+							class="form-control filter-button filter-button-ja">や</a></td>
+						<td width=5%><a
+							th:href="@{/glossarylist/filter(key=ら, btnevnt=true)}"
+							class="form-control filter-button filter-button-ja">ら</a></td>
+						<td width=5%><a
+							th:href="@{/glossarylist/filter(key=わ, btnevnt=true)}"
+							class="form-control filter-button filter-button-ja">わ</a></td>
+						<td width=5%><a
+							th:href="@{/glossarylist/filter(key=a-e, btnevnt=true)}"
+							class="form-control filter-button filter-button-en">a-e</a></td>
+						<td width=5%><a
+							th:href="@{/glossarylist/filter(key=f-j, btnevnt=true)}"
+							class="form-control filter-button filter-button-en">f-j</a></td>
+						<td width=5%><a
+							th:href="@{/glossarylist/filter(key=k-o, btnevnt=true)}"
+							class="form-control filter-button filter-button-en">k-o</a></td>
+						<td width=5%><a
+							th:href="@{/glossarylist/filter(key=p-t, btnevnt=true)}"
+							class="form-control filter-button filter-button-en">p-t</a></td>
+						<td width=5%><a
+							th:href="@{/glossarylist/filter(key=u-z, btnevnt=true)}"
+							class="form-control filter-button filter-button-en">u-z</a></td>
+						<td width=10%><a th:href="@{/glossarylist}"
+							class="form-control filter-button filter-clear-button" onclick="">フィルター解除</a></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+	<div class="table-header-title">
+		<table class="table table-bordered display glossary-table-header"
+			style="height: 100%">
+			<!-- Table header -->
+			<tbody class='table-header'>
+				<tr>
+					<td width="2%" class='radio-btn-header'></td>
+					<td width="7%">用語ID</td>
+					<td width="35%" class='term-td-header'>日本語名/英語名</td>
+					<td width="56%">説明</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+
+	<div class="mainbody"></div>
+	<div class="container">
+		<table class="table table-bordered display glossary-table"
+			id="glossary-table" style="width: 100%">
+			<!-- Table body -->
+			<tbody class='glossary-table-tbody'>
+				<!-- Iterate through all the records -->
+				<tr class='glossary-table-row'
+					th:each="glossary,iter : ${glossaryList}"
+					th:id="'tr_' + ${iter.index}">
+					<!-- If the user has Update/Delete access to the record, display the radio button -->
+					<td class='radio-btn-td' th:id="'radiobtn-td_' + ${iter.index}"
+						style="text-align: center; width: 2%;"><input
+						th:id="'radiobtn_' + ${iter.index}" type='radio'
+						th:value="${iter.index}" name='selected_glossary' /></td>
+					<td th:id="'glossaryId-td_'+${iter.index}" width="7%"
+						th:utext="${glossary.id}"></td>
+					<td th:id="'glossarydata-td_'+${iter.index}" width="35%"
+						class='term-td'>
+						<table class='term-table' style="border: none; padding: 0px;">
+							<tbody>
+								<tr>
+									<td class='term-table-td'><input
+										th:id="'japaneseReading_'+${iter.index}" class='term-input'
+										type="text" readonly
+										th:value="${session.usrLocale=='en'}?${glossary.termEnShort}:${glossary.termJaKana}"></td>
+								</tr>
+								<tr>
+									<td th:value="${glossary.termJa}" class='term-table-td'><input
+										th:id="'japaneseTerm_ja_'+${iter.index}"
+										class='term-input main-term-input' type="text" readonly
+										th:value="${session.usrLocale=='en'}?${glossary.termEn}:${glossary.termJa}"></td>
+								</tr>
+								<tr>
+									<td class='term-table-td'><input
+										th:id="'englishTerm_ja_'+${iter.index}" class='term-input'
+										type="text" readonly
+										th:value="${session.usrLocale=='en'}?${glossary.termJa}:${glossary.termEn}"></td>
+								</tr>
+							</tbody>
+						</table>						
+					</td>
+					<td th:id="'glossarydesc-td_'+${iter.index}" style="width: 56%"
+						class='desc-td'><textarea
+							th:id="'glossarydesc_ja_'+${iter.index}" readonly
+							class='desc-area desc-area-ja'
+							th:utext="${session.usrLocale=='en'}?${glossary.descriptionEn}:${glossary.descriptionJa}"> </textarea></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+
+	<div class="footer">
+		<div class="button-div" id="button-diva">
+			<button class="form-control register-button"
+				onclick="callGlossaryDataModel()">新規登録</button>
+			<button class="form-control update-button"
+				onclick="callGlossaryDataUpdateModel()">更新</button>
+			<button class="form-control delete-button" onclick="">削除</button>	
+			<div id="pg_glossary-table" class="pagination-div"
+				th:if="${glossaryList.totalPages>1}">
+				<a th:classappend="${!glossaryList.hasPrevious()} ? 'disabled':''"
+					class="form-control navig-button"
+					th:href="@{/glossarylist/filter(key=*{key}, btnevnt=*{btnevnt}, page=0,size=${glossaryList.size})}">&lt;&lt;</a>
+				<a th:classappend="${!glossaryList.hasPrevious()} ? 'disabled':''"
+					class="form-control navig-button"
+					th:href="@{/glossarylist/filter(key=*{key}, btnevnt=*{btnevnt}, page=${glossaryList.number-1},size=${glossaryList.size})}">&lt;</a>
+				<a th:classappend="${!glossaryList.hasNext()} ? 'disabled':''"
+					class="form-control navig-button"
+					th:href="@{/glossarylist/filter(key=*{key}, btnevnt=*{btnevnt}, page=${glossaryList.number+1},size=${glossaryList.size})}">&gt;</a>
+				<a th:classappend="${!glossaryList.hasNext()} ? 'disabled':''"
+					class="form-control navig-button"
+					th:href="@{/glossarylist/filter(key=*{key}, btnevnt=*{btnevnt}, page=${glossaryList.totalPages - 1},size=${glossaryList.size})}">&gt;&gt;</a>
+			</div>			
+			<button class="form-control close-button"
+				onclick="location.href='/menu'">終了</button>
+		</div>
+	</div>
+
+
+	<div th:replace="form/glossarydata :: glossaryData_Fragment"></div>
+	<div th:replace="form/taglist :: tagList_Fragment"></div>
+	<div th:replace="form/tagdata :: tagData_Fragment"></div>
+
+</body>
+<script th:inline="javascript">
+	var incrementvar;
+	var selectedRow;
+	var locale='ja';
+	// select the Radio button first record from the table list
+	var tagSelectedRow;
+	
+	var now = new Date();
+	var day = ("0" + now.getDate()).slice(-2);
+	var month = ("0" + (now.getMonth() + 1)).slice(-2);
+	var today = now.getFullYear() + "-" + (month) + "-" + (day);
+	
+	var nextGlossaryId;
+	var validLogin = [[${session.userName}]];
+	var form_clean;
+	var form_clean_tag;
+	var initialTagValue;
+
+	function callGlossaryDataModel(){	
+		$('#saveTerm').attr('disabled','disabled');
+		sendAjaxReq('GET', '/getMaxId', '','showGlossaryWindow');		
+		form_clean = $("#registerTermForm").serialize();
+	}
+	
+	function showGlossaryWindow(maxGlossaryId){
+		document.getElementById('termId').value = maxGlossaryId + 1;
+		document.getElementById('baseId').value = '0';
+				
+		document.getElementById('termJa').value = '';
+		document.getElementById('termJaKana').value = '';
+		document.getElementById('short_ja').value = '';
+		document.getElementById('desc_ja').value = '';
+		
+		document.getElementById('term_en').value = '';
+		document.getElementById('short_en').value = '';
+		document.getElementById('desc_en').value = '';		
+		document.getElementById('remark').value = '';
+		
+		
+		document.getElementById('registerDate').value = today;
+		document.getElementById('updatedDate').value = today;
+		document.getElementById('updatedUser').value = validLogin;
+		
+	
+		for (i = 0; i < 8; i++) { 
+			var tagsinfo =  "tagsinfo"+(i+1);
+			document.getElementById(tagsinfo).value = '';
+		}
+		
+		$('[href="#glossary"]').tab('show');
+		$('#glossaryDataModal').modal();
+	}
+	
+	function callGlossaryDataUpdateModel(){		
+		$('#saveTerm').attr('disabled','disabled');
+		var glossaryList = [[${glossaryList.getContent()}]];
+		var glossaryData = glossaryList[selectedRow];
+		
+		document.getElementById('termId').value = glossaryData.id;
+		document.getElementById('baseId').value = glossaryData.baseItemId;
+				
+		document.getElementById('termJa').value = glossaryData.termJa;
+		document.getElementById('termJaKana').value = glossaryData.termJaKana;
+		document.getElementById('short_ja').value = glossaryData.termJaShort;
+		document.getElementById('desc_ja').value = glossaryData.descriptionJa;
+		
+		document.getElementById('term_en').value = glossaryData.termEn;
+		document.getElementById('short_en').value = glossaryData.termEnShort;
+		document.getElementById('desc_en').value = glossaryData.descriptionEn;		
+		document.getElementById('remark').value = glossaryData.notes;
+		
+		
+		var registeredDate = new Date(glossaryData.entryDate);
+		document.getElementById('registerDate').value =  registeredDate.toISOString().split('T')[0];
+		document.getElementById('updatedDate').value = today;
+		document.getElementById('updatedUser').value = glossaryData.updateUser;
+		
+		if(glossaryData.termTags != null){
+			var tagTerms = glossaryData.termTags.split(";");
+			for (i = 0; i < tagTerms.length; i++) { 
+				var tagsinfo =  "tagsinfo"+(i+1);
+				document.getElementById(tagsinfo).value = tagTerms[i];
+			}
+		}else{
+			for (i = 0; i < 8; i++) { 
+				var tagsinfo =  "tagsinfo"+(i+1);
+				document.getElementById(tagsinfo).value = '';
+			}
+		}
+		
+		$('[href="#glossary"]').tab('show');
+		$('#glossaryDataModal').modal();	
+		
+		form_clean = $("#registerTermForm").serialize();
+	}
+
+	$(document).ready(function() {		
+		var selectedRowLocal;		
+		var firstRow = $('#glossary-table').find('tr:first').attr('id');
+		var text_noRecord = '用語がありません';
+		var key = [[${inputKey}]];
+		
+		if(key!=null)
+			$('.filter-input').val(key);
+		else
+			$('.filter-input').val('');
+		
+		$('.locale-dropdown option:selected').hide();
+		
+		if(firstRow!=undefined){
+			var firstRowIndex = parseInt(firstRow.split("_")[1]);
+			selectedRowLocal = firstRowIndex;
+			selectedRow = selectedRowLocal;
+			hightlight(selectedRowLocal);
+			adjustColumnWidth();
+		}else{
+			var noRecordRow = $('<tr></tr>').addClass("no-record");
+        	var data = $('<td colspan="4" align="center"></td>').text(text_noRecord).appendTo(noRecordRow);
+        	var table = $("#glossary-table > tbody");
+        	noRecordRow.appendTo(table);
+        	$('.update-button').prop('disabled',true);
+        	$('.delete-button').prop('disabled',true);
+		}
+		
+		$(document).on("click", "#glossary-table tbody tr", function() {
+			var row = this.id;
+			var rowIndex = row.split("_")[1];
+			removeHighlight(selectedRowLocal);
+			selectedRowLocal = rowIndex;
+			selectedRow = selectedRowLocal;
+			hightlight(selectedRowLocal);
+		});
+		
+		$(window).resize(function() {
+			adjustColumnWidth();
+		});
+		
+	 	$('.checkDirty').keyup(function() {
+			var form_dirty = $("#registerTermForm").serialize();
+			if(form_clean != form_dirty) {
+				 $('#saveTerm').removeAttr('disabled');
+			 }			
+		});		
+		
+		$(".filter-input").on("keypress", function(e) {
+			
+			var key = e.which;
+			if(key == 13){
+				this.form.submit(); 
+			}
+			  	  
+		});
+			
+			
+			$(".filter-button-ja").on("click", function() {
+				
+			});
+			
+			$(".filter-button-en").on("click", function() {
+				
+			});
+			
+			$(".filter-clear-button").on("click", function() {
+				
+			});			
+	});
+
+	function adjustColumnWidth() {
+		var widthList = [];
+
+		$('#glossary-table>tbody>tr:first>td').each(function() {
+			var value = $(this).width();
+			widthList.push(value);
+		})
+		var index = 0;
+		$(".glossary-table-header>tbody>tr:first>td").each(function() {
+			if (index == 3) {
+				var element = document.querySelector('.container');
+				if (element.offsetHeight < element.scrollHeight) {
+					$(this).width(widthList[index] + 17);
+				} else
+					$(this).width(widthList[index]);
+			} else {
+				$(this).width(widthList[index]);
+			}
+			index = index + 1;
+		})
+	}
+
+	function hightlight(row) {
+		$("#radiobtn-td_" + row).addClass('selected');
+		$("#radiobtn_" + row).prop('checked', true);
+		$("#glossaryId-td_" + row).addClass('selected');
+		$("#glossarydata-td_" + row).addClass('selected');
+		$("#glossarydesc-td_" + row).addClass('selected');
+		$("#japaneseReading_" + row).addClass('selected');
+		$("#japaneseTerm_ja_" + row).addClass('selected');
+		$("#englishTerm_ja_" + row).addClass('selected');
+		$("#englishShortTerm_" + row).addClass('selected');
+		$("#japaneseTerm_en_" + row).addClass('selected');
+		$("#englishTerm_en_" + row).addClass('selected');
+		$("#glossarydesc_ja_" + row).addClass('selected');
+		$("#glossarydesc_en_" + row).addClass('selected');
+	}
+
+	function removeHighlight(row) {
+		$("#radiobtn-td_" + row).removeClass('selected');
+		$("#radiobtn_" + row).prop('checked', false);
+		$("#glossaryId-td_" + row).removeClass('selected');
+		$("#glossarydata-td_" + row).removeClass('selected');
+		$("#glossarydesc-td_" + row).removeClass('selected');
+		$("#japaneseReading_" + row).removeClass('selected');
+		$("#japaneseTerm_ja_" + row).removeClass('selected');
+		$("#englishTerm_ja_" + row).removeClass('selected');
+		$("#englishShortTerm_" + row).removeClass('selected');
+		$("#japaneseTerm_en_" + row).removeClass('selected');
+		$("#englishTerm_en_" + row).removeClass('selected');
+		$("#glossarydesc_ja_" + row).removeClass('selected');
+		$("#glossarydesc_en_" + row).removeClass('selected');
+	}
+
+	function closeGlossaryDataModel(){
+		 var form_dirty = $("#registerTermForm").serialize();		 
+		 var selectJapaneseTag = $("#japanesetag-td_" + tagSelectedRow).text();
+		 
+		 if(initialTagValue == undefined){
+			 initialTagValue = "";
+		 }
+		 
+		 if(form_clean != form_dirty || initialTagValue!=selectJapaneseTag) {
+			 showDialogAndInvokeFunc('確認',
+						modalDialogConfig.messageTypes.warning, 'データが更新されていますが<br>終了してよろしいですか？',
+						modalDialogConfig.buttonTypes.YESNO, 'closeRegisterModalWindow', 'stayInRegisterWindow');
+		 }else{			
+			$("#glossaryDataModal").modal('hide');
+			window.location.reload();	
+		 }				
+	}
+	
+	function stayInRegisterWindow(){
+		$('#exampleModal').modal('hide');
+		$(this).closest('#exampleModal').hide()
+	}
+	
+	function dispGlossaryData() {
+		$('#glossary-data').removeClass('active-tab');
+		$('#tag-info').addClass('active-tab');
+	}
+	function dispTagData() {
+		$('#glossary-data').addClass('active-tab');
+		$('#tag-info').removeClass('active-tab');
+	}
+	
+	function closeTagListModel() {
+		$('#tagListModal').modal('hide');
+	}
+	
+	//update the tagdata information from taglist
+	function callTagDataUpdateModel(){
+		var updateTagId = $("#tagid-td_" + tagSelectedRow).text();
+	    var updateTagOrderId = $("#tagorder-td_" + tagSelectedRow).text();
+	    var updateJapaneseTag = $("#japanesetag-td_" + tagSelectedRow).text();
+	    var updateEnglishTag = $("#englishtag-td_" + tagSelectedRow).text();
+	    
+	    document.getElementById('tag_Id').value = updateTagId;
+	    document.getElementById('tagOrder_Id').value = updateTagOrderId;
+	    document.getElementById('japaneseTag').value = updateJapaneseTag;
+	    document.getElementById('englishTag').value = updateEnglishTag;
+	    $("span").remove();
+	    form_clean_tag = $("#tagRegisterForm").serialize();
+	    $('#japanesetag_Id_label').css("background-color", "#1f497d");
+		$('#englishtag_Id_label').css("background-color", "#1f497d");
+	    $('#tagdataModal').modal();
+	 }
+	
+	//Table alignment adjustment onloading
+	$("#tagListModal").on('shown.bs.modal', function() {
+		adjustColumnWidthTagTable();
+	});
+				
+	function clearTextField(clearfield) {		
+		document.getElementById(clearfield).value = '';
+		}
+		
+		
+	function selectTagDataModel(){
+		var selectJapaneseTag = $("#japanesetag-td_" + tagSelectedRow).text();		
+        initialTagValue = document.getElementById(selectTagInformation).value;
+      	var alreadyPresent=false;
+       	for(var i=1;i<=8;i++){
+    	   var tagId = "tagsinfo"+(i);
+    	   if( $('#' + tagId).val() == selectJapaneseTag){
+    		   alreadyPresent = true;
+    		   break;
+    	   }
+        }
+       	if(alreadyPresent){
+    	   showDialogAndInvokeFunc('確認',
+					 modalDialogConfig.messageTypes.info,
+					 '選択したタグが重複しています 。',
+					 modalDialogConfig.buttonTypes.OK,
+					 'redirectGlossaryDataModel',
+					 '');
+       	}else{
+       		$('#' + selectTagInformation).val(selectJapaneseTag);
+       		if(initialTagValue!=selectJapaneseTag){
+           		$('#saveTerm').removeAttr('disabled');	
+           	}
+       	}
+       	
+        $('#tagListModal').modal('hide');
+        $('#glossaryDataModal').modal();
+	}
+
+	var selectTagInformation;
+	function callTagListModel(selectedTagId){
+	   $('#tagListModal').modal();
+		   selectTagInformation = selectedTagId
+	}
+		
+	//if user select same japanese name two time given error msg and rediret to GlossayDataModal
+	function redirectGlossaryDataModel() {		
+		$("#redirectGlossaryDataModel").modal()
+	}
+		
+	// initialy tagdatamodel have empty values
+	function callTagDataModel() {
+		$('.save-button-tagdata').attr('disabled','disabled');
+		document.getElementById('tagOrder_Id').value = 0;
+		document.getElementById('japaneseTag').value = '';
+		document.getElementById('englishTag').value = '';
+		form_clean_tag = $("#tagRegisterForm").serialize();
+		$('#tagdataModal').modal();
+	}
+	
+	$('.checkDirtyTag').keyup(function() {
+		var form_dirty_tag = $("#tagRegisterForm").serialize();
+		if(form_clean_tag != form_dirty_tag) {
+			 $('.save-button-tagdata').removeAttr('disabled');
+		 }			
+	});
+	
+	$(document).ready(function() {
+		tagSelectedRow = 0;
+		hightlightTagTable(tagSelectedRow);
+		adjustColumnWidthTagTable();
+		
+		$(document).on("click", "#tagtable tbody tr", function() {
+			var row = $(this).index();
+			removeHighlightTagTable(tagSelectedRow);
+			tagSelectedRow = row;
+			hightlightTagTable(row);
+		});
+		
+		 $("#tagRegisterForm").on('submit', function(event) {
+				// Prevent the form from submitting via the browser.
+				var isvalid = $("#tagRegisterForm").valid();
+			
+				if (isvalid) {
+					event.preventDefault();
+					ajaxPostForRegisterTag();
+					tagSelectedRow = 0;
+				}
+			}); 
+	});
+
+	$('.close-button-tagdata').on("click", function() {
+		var form_dirty_tag = $("#tagRegisterForm").serialize();
+		if(form_clean_tag != form_dirty_tag) {
+			 showDialogAndInvokeFunc('確認',
+						modalDialogConfig.messageTypes.warning, 'データが更新されていますが<br>終了してよろしいですか？',
+						modalDialogConfig.buttonTypes.YESNO, 'closeTagRegisterModalWindow', 'stayInTagRegisterWindow');
+		}else{
+			removeErrorTagAndModalHide();
+		}
+	});
+	
+	function removeErrorTagAndModalHide(){
+		$("label.error").hide();
+		$(".error").removeClass("error");
+		$('#japanesetag_Id_label').css("background-color", "red");
+        $('#englishtag_Id_label').css("background-color", "red");
+        $("span").remove();	
+        ajaxGetForTagList(tagSelectedRow);
+        
+		$("#tagdataModal").modal('hide');
+	}
+	
+	function closeTagRegisterModalWindow(){
+		removeErrorTagAndModalHide();
+	}
+	
+	function stayInTagRegisterWindow(){
+		$('#exampleModal').modal('hide');
+		$(this).closest('#exampleModal').hide()
+	}
+	
+	$(window).resize(function() {
+		adjustColumnWidthTagTable();
+	});
+	
+	function adjustColumnWidthTagTable() {
+		var widthList = [];
+
+		$("#tagtable>tbody>tr:first>td").each(function() {
+			var value = $(this).width();
+			widthList.push(value);
+		})
+		var index = 0;
+		$(".tag-table-header>tbody>tr:first>td").each(function() {
+			if (index == 4) {
+				var element = document.querySelector('.container-tag');
+				if (element.offsetHeight < element.scrollHeight) {
+					$(this).width(widthList[index] + 17);
+				} else
+					$(this).width(widthList[index]);
+			} else {
+				$(this).width(widthList[index]);
+			}
+			index = index + 1;
+		})
+	}
+
+	function hightlightTagTable(row) {
+		$("#radio-td_" + row).addClass('selected');
+		$("#radiobtn-tag_" + row).prop('checked', true);
+		$("#tagid-td_" + row).addClass('selected');
+		$("#tagorder-td_" + row).addClass('selected');
+		$("#japanesetag-td_" + row).addClass('selected');
+		$("#englishtag-td_" + row).addClass('selected');
+	}
+
+	function removeHighlightTagTable(row) {
+		$("#radio-td_" + row).removeClass('selected');
+		$("#radiobtn-tag_" + row).prop('checked', false);
+		$("#tagid-td_" + row).removeClass('selected');
+		$("#tagorder-td_" + row).removeClass('selected');
+		$("#japanesetag-td_" + row).removeClass('selected');
+		$("#englishtag-td_" + row).removeClass('selected');
+	}
+	
+	$("#pg_tag-table").on( "click",".nav-button",function(event) {
+		onPageClick(event); 
+	});
+</script>
+</html>

@@ -1,0 +1,342 @@
+.footer_bg {
+	color: white;
+}
+
+.save-button, .close-button, .register-button, .update-button {
+	font: normal 16px Meiryo UI !important;
+	background-color: #1f497d;
+	color: white;
+	width: 83px;
+	height: 30px;
+}
+
+.close-button {
+	font: normal 18px Meiryo UI !important;
+	padding: 3px !important;
+	margin-left: 39px;
+	background-color: #1f497d;
+	margin-left: 39px;
+}
+
+@media ( min-width : 750px) {
+	.col-md-2 {
+		width: 10.666667%;
+	}
+}
+
+.termid {
+	margin-left: -17px;
+}
+
+.term {
+	margin-right: 220px !important;
+	padding-left: 31px !important;
+	margin-top: 11px;
+	display: flex;
+	align-items: center;
+}
+
+.textfield {
+	width: 76% !important;
+}
+
+.reset {
+	width: 27px;
+	height: 25px;
+}
+
+.col-md-1 {
+	width: 10px;
+}
+
+#saveTerm {
+	background-color: #1f497d;
+	font: normal 18px Meiryo UI !important;
+	padding: 3px !important;
+}
+
+.textlabels {
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+}
+
+.textlabel {
+	width: 27px;
+	margin-right: 10px;
+	font-size: 20px;
+	font-family: initial;
+}
+
+.textlabel1 {
+	margin-top: 2px;
+	width: 27px;
+	margin-right: 10px;
+	font-size: 20px;
+	font-family: initial;
+}
+
+.btn-primary:hover, .btn-primary:focus {
+	background-color: #778fac !important;
+	color: black !important;
+	border-color: #95b3d7 !important;
+}
+
+.nav-tabs {
+	border-bottom: 0px solid #dee2e6;
+}
+
+.nav-tabs li {
+	background-color: grey;
+	padding: 10px;
+	border: 0.25px solid #43b3e9;
+}
+
+.active-tab {
+	background-color: white !important;
+	/* border: 0.25px solid #43b3e9; */
+}
+
+.tab-pane {
+	/* border: 1px solid black; */
+	
+}
+
+#saveTerm {
+	position: absolute;
+	left: 50px;
+	bottom: 16px;
+	width: 120px;
+	height: 30px;
+}
+
+#closeTerm {
+	    position: relative;
+    right: 344px;
+    width: 120px;
+    height: 30px;
+    padding: 1px;
+    font: normal 18px Meiryo UI !important;
+}
+
+.nav-tabs li a {
+	color: #000204
+}
+
+#term_en-error {
+	position: relative;
+	color: red;
+	width: 27%;
+}
+
+.j-label {
+	width: 200px;
+	padding-left: 25px;
+}
+
+.j-input {
+	display: flex;
+	align-items: center;
+}
+
+.j-remarklabel {
+	width: 200px;
+	padding-left: 25px;
+	position: relative;
+	left: 15px;
+}
+
+.j-remarkinput {
+	width: 600px;
+	position: relative;
+	left: 15px;
+}
+
+.j-datelabel {
+	width: 130px;
+	padding-left: 8px;
+	position: relative;
+}
+
+.userdate {
+	display: flex;
+	align-items: center;
+}
+
+.datefield {
+	background-color: #1f497d;
+	width: 120px;
+	text-align: center;
+	line-height: 30 px;
+	color: #b4b5b5;
+	padding: 3px;
+	font: normal 17px Meiryo UI !important;
+}
+
+.username-input {
+	width: 162px;
+	height: 32px;
+	border-radius: 5px;
+	position: relative;
+	bottom: 3px;
+}
+
+.form-control {
+	width: 690px;
+}
+
+label.error {
+	left: 10px;
+}
+
+#short_ja {
+	width: 375px;
+}
+
+#short_en {
+	width: 375px;
+}
+
+.navbar-inverse .navbar-collapse, .navbar-inverse .navbar-form {
+	background-color: #C6D9F1 !important;
+}
+
+.navbar .navbar-inverse .navbar-fixed-top {
+	background-color: #C6D9F1;
+}
+
+.navbar-fixed-top {
+	height: 10px;
+}
+
+.navbar-default {
+	background-color: #C6D9F1 !important;
+}
+
+.navbar-inverse {
+	background-color: #C6D9F1 !important;
+}
+
+.navbar-inverse .navbar-text {
+	color: #1f497d !important;
+	font: normal 30px Meiryo UI !important;
+}
+
+.baseitemid {
+	height: 32px;
+	border-radius: 5px;
+	position: relative;
+	bottom: 1px;
+	left: 5px;
+}
+
+.termID {
+	background-color: #1f497d;
+	width: 145px;
+	text-align: center;
+	line-height: 30 px;
+	color: white;
+	padding: 4px;
+	font: normal 17px Meiryo UI !important;
+}
+
+.userLabel {
+	font: normal 17px Meiryo UI !important;
+	color: #666b6b;
+}
+
+.username {
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	position: relative;
+	left: 736px;
+	bottom: 50px;
+}
+
+.username-div {
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	margin: 62px 0px 6px 0px;
+}
+
+.navbar-fixed-bottom, .navbar-fixed-top {
+	position: relative !important;
+	border-width: 0 0 0px !important
+}
+
+.usr-name-input {
+	color: #404040;
+	font-size: 10pt;
+	padding: 0px;
+	display: inline-block;
+	height: 15px !important;
+	background-color: #c6d9f1;
+}
+
+.modal-body {
+	top: 50px;
+	height: auto;
+	overflow-y: auto;
+	height: auto;
+	position: absolute;
+	bottom: 50px;
+}
+
+.modal-footer {
+	background-color: #C6D9F1;
+	display: initial;
+	height: 60px;
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+}
+
+.logo-glossarydata {
+	display: flex;
+	margin-top: 12px;
+	font: normal 28px Meiryo UI !important;
+	color: #1f497d;
+}
+
+.logo {
+	position: relative;
+	right: 0px;
+}
+
+.glossaryid {
+	display: flex;
+	margin-left: 15px;
+}
+
+.change-message {
+	display: none;
+}
+
+#errorvalid_term_en, #errorvalid_termJa, #errorvalid_termJaKana{
+	color:red;
+}
+
+#termJa-error {
+	color:red;
+	width: 27%;
+}
+
+.error_form {
+	position: absolute;
+	color: red;
+}
+
+.focused {
+	border: solid 1px red !important;	
+}
+
+.label_jaKaEn {
+	background-color: red
+}
+
+.row {
+	flex-wrap: inherit !important;
+}

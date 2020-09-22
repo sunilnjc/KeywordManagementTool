@@ -1,0 +1,137 @@
+@charset "UTF-8";
+
+body {
+	font-family: "Meiryo UI";
+}
+
+.container {
+	border: 1px red;
+	width: 450px;
+	height: 250px;
+	background-color: white;
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	margin: auto;
+	border: 1px solid #fff;
+	box-shadow: 0px 2px 7px #292929;
+	-moz-box-shadow: 0px 2px 7px #292929;
+	-webkit-box-shadow: 0px 2px 7px #292929;
+	border-radius: 10px;
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
+}
+
+.mainbody, .header, .footer {
+	padding: 5px;
+}
+
+.header {
+	height: 40px;
+	border-bottom: 1px solid #EEE;
+	background-color: #C6D9F1;
+	-webkit-border-top-left-radius: 5px;
+	-webkit-border-top-right-radius: 5px;
+	-moz-border-radius-topleft: 5px;
+	-moz-border-radius-topright: 5px;
+	border-top-left-radius: 5px;
+	border-top-right-radius: 5px;
+	text-align: center;
+	vertical-align: middle;
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	right: 0px;
+}
+
+.footer {
+	bottom: 0px;
+	left: 0px;
+	right: 0px;
+	position: absolute;
+	height: 40px;
+	background-color: #C6D9F1;
+	border-top: 1px solid #DDD;
+	-webkit-border-bottom-left-radius: 5px;
+	-webkit-border-bottom-right-radius: 5px;
+	-moz-border-radius-bottomleft: 5px;
+	-moz-border-radius-bottomright: 5px;
+	border-bottom-left-radius: 5px;
+	border-bottom-right-radius: 5px;
+}
+
+.title {
+	line-height: 30px;
+	color: #7f7f7f;
+	font-size: 27px;
+	margin: 0px;
+	padding: 0px;
+}
+
+.close-button {
+	float: right;
+	margin-right: 10px;
+}
+
+.login-button {
+	margin-right: 10px;
+	float: right;
+}
+
+.btn-primary {
+	color: #404040;
+	background-color: #95b3d7;
+	border-color: #95b3d7;
+	width: 124px;
+}
+
+.btn {
+	padding: 3px 12px;
+}
+
+.btn-primary:hover, .btn-primary:focus {
+	background-color: #b9cde5 !important;
+	color: #404040 !important;
+	border-color: #95b3d7 !important;
+}
+
+.btn-primary:active, .btn-primary.active, .open>.dropdown-toggle.btn-primary
+	{
+	background-color: #376092 !important;
+	color: #404040 !important;
+	border-color: #95b3d7 !important;
+}
+
+.username-div {
+	margin-top: 80px;
+	margin-left: 35px;
+}
+
+.password-div {
+	margin-top: 10px;
+	margin-left: 35px;
+}
+
+.username-label, .password-label {
+	background-color: #1f497d;
+	width: 105px;
+	height: 30px; /* padding: 10px; */
+	text-align: center;
+	line-height: 30 px;
+	padding-left: 10px;
+	padding-right: 10px;
+	color: white;
+	padding-top: 4px;
+}
+
+.username-input, .password-input {
+	margin-left: 10px;
+}
+
+.form-control {
+	display: inline-block;
+	width: 225px;
+	height: 34px;
+}

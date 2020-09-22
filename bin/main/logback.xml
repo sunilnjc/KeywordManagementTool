@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <property name="logDirectory" value="glossarylog"/>
+    <timestamp key="myTimestamp" datePattern="yyyy-MM-dd" />
+    <appender name="consoleAppender" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <Pattern>%d{dd-MM-yyyy HH:mm:ss.SSS} %magenta([%thread]) %highlight(%-5level) %logger.%M - %msg%n</Pattern>
+        </encoder>
+    </appender>
+    <appender name="fileAppender" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <File>/${logDirectory}/glossaryLogger.${myTimestamp}.log</File>
+     
+       	<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+        <fileNamePattern>${logDirectory}/glossaryLogger.%d{yyyy-MM-dd}.%i.log</fileNamePattern>
+        <timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+            <maxFileSize>10MB</maxFileSize>
+        </timeBasedFileNamingAndTriggeringPolicy>
+    </rollingPolicy>
+
+        <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
+            <MaxFileSize>10000KB</MaxFileSize>
+        </triggeringPolicy>
+        
+        <encoder>
+            <Pattern>%d [%thread] %-5level %logger{36} - %msg%n</Pattern>
+        </encoder>
+    </appender>
+   
+    <logger name="com.fujitsu" level="DEBUG"/>
+   
+    <root level="INFO">
+        <appender-ref ref="fileAppender"/>
+        <appender-ref ref="consoleAppender"/>
+    </root>
+</configuration>
+

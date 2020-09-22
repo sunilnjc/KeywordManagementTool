@@ -1,0 +1,22 @@
+# created by FCIPL on 2018-08-22
+server:
+  port: 9005
+spring:
+# DataSource settings: set here configurations for the database connection
+  datasource:
+    url: jdbc:postgresql://localhost:5432/postgres
+    username: postgres
+    password: giri
+  jpa.generate-ddl: true
+  # Show or not log for each sql query
+  jpa.show-sql: true
+  # Hibernate setting
+  jpa.hibernate.ddl-auto: update
+  jpa.properties.hibernate.dialect: org.hibernate.dialect.PostgreSQLDialect
+  thymeleaf.cache: false
+  data:
+    web:
+      pageable:
+        default-page-size: 5
+#Encoding type
+encoding: UTF-8

@@ -1,0 +1,57 @@
+<!-- COPYRIGHT 2018 FUJITSU
+Author : FCIPL
+Date : 2018/07/04 -->
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="stylesheet" type="text/css" href="/css/glossarydata.css" />
+<link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+	<div  th:fragment="footer">
+
+		<div class="row">
+			<div class="j-remarklabel">
+				<label class="termID" for="remark">備考</label>
+			</div>
+			<div class="j-remarkinput">
+				<textarea class="form-control checkDirty" style="resize: none; width: 695px"
+					maxlength="128" id="remark" name="comment"></textarea>
+			</div>
+		</div>
+		<div class="row term">
+
+			<div class="userdate">
+				<div class="j-datelabel">
+					<label class="datefield">登録日</label>
+				</div>
+				<div class="j-dateinput">
+					<input type="text" class="username-input" disabled
+						id="registerDate"></input>
+				</div>
+			</div>
+			<div class="userdate">
+				<div class="j-datelabel">
+					<label class="datefield">最終更新日</label>
+				</div>
+				<div class="j-dateinput">
+					<input type="text" class="username-input" disabled id="updatedDate"></input>
+				</div>
+			</div>
+			<div class="userdate">
+				<div class="j-datelabel">
+					<label class="datefield">更新ユーザー</label>
+				</div>
+				<div class="j-dateinput">
+					<input type="text" class="username-input" disabled id="updatedUser" 
+						value="未登録"></input>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

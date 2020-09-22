@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+
+<div class="modal fade" id="glossaryDataModal" data-backdrop="static"
+	data-keyboard="false" role="dialog" th:fragment="glossaryData_Fragment">
+
+	<div class="modal-dialog modal-lg">
+
+		<!-- Modal content-->
+		<div class="modal-content glossary-data-content" id="glossary-data-id">
+			<form id="registerTermForm" name="registration">
+				<div class="change-message">You have unsaved changes.</div>
+				<div class="modal-header" style="padding-top: 0px"
+					id="modal-header-glossary">
+					<div th:replace="form/header:: headerWithMenu"></div>
+				</div>
+				<div class="modal-body" id="glossaryDataBody"
+					style="max-height: 700px">
+					<div th:replace="form/header:: headertext"></div>
+
+
+					<div id="exTab2" class="container-fluid">
+
+
+						<ul class="nav nav-tabs" data-tabs="tabs">
+							<li id="glossary-data" class="active-tab"><a
+								data-toggle="tab" style="width: 100%; height: 100%;"
+								href="#glossary" onclick="dispTagData()">用語定義</a></li>
+							<li id='tag-info'><a data-toggle="tab" href="#tagInfo"
+								onclick='dispGlossaryData()'>タグ情報</a></li>
+						</ul>
+						<div class="tab-content" style="height: 48vh">
+							<div class="tab-pane active" id="glossary"  tabindex="1">
+
+								<div class="container-fluid">
+
+									<div class="row" style="margin-top: 2px;">
+										<div class="j-label">
+											<label class="termID" id="JapaneseErrorLabelId" for="termJa">日本語名</label>
+										</div>
+										<div class="j-input">
+											<input type="text" class="form-control checkDirty" id="termJa"
+												maxlength="64" style="width: 690px;" name="termJa" autofocus/>
+										</div>										
+									</div>
+									<div class="row" style="margin-top: 9px;">
+										<div class="j-label">
+											<label class="termID" id="kanaErrorLabelId" for="termJaKana">日本語読み</label>
+										</div>
+										<div class="j-input">
+											<input type="text" class="form-control checkDirty" id="termJaKana"
+													maxlength="192" style="width: 690px;" name="termJaKana" />
+										</div>										
+									</div>
+									<div class="row" style="margin-top: 9px;">
+										<div class="j-label">
+											<label class="termID" for="short_ja">日本語略名</label>
+										</div>
+										<div class="j-input">
+											<input type="text" class="form-control checkDirty" id="short_ja"
+												maxlength="16" name="short_ja" />
+										</div>
+									</div>
+									<div class="row" style="margin-top: 9px;">
+										<div class="j-label">
+											<label class="termID" for="desc_en">日本語説明</label>
+										</div>
+										<div class="j-input">
+											<textarea class="form-control checkDirty"
+												style="resize: none; width: 690px;" id="desc_ja"
+												maxlength="300" name="desc_en"></textarea>
+										</div>
+									</div>
+
+									<div class="row" style="margin-top: 9px;">
+										<div class="j-label">
+											<label class="termID" id="englishErrorLabelId" for="term_en">Term(En)</label>
+										</div>
+										<div class="j-input">
+											<input type="text" class="form-control checkDirty" id="term_en"
+												maxlength="100" style="width: 690px;" name="term_en" />
+										</div>										
+									</div>
+
+									<div class="row" style="margin-top: 9px;">
+										<div class="j-label">
+											<label class="termID" for="short_en">Short(En)</label>
+										</div>
+										<div class="j-input">
+											<input type="text" class="form-control checkDirty" id="short_en"
+												maxlength="30" name="short_en" />
+										</div>
+									</div>
+
+									<div class="row" style="margin-top: 9px;">
+										<div class="j-label">
+											<label class="termID" for="desc_en">Description(En)</label>
+										</div>
+										<div class="j-input">
+
+											<textarea class="form-control checkDirty"
+												style="resize: none; width: 690px;" id="desc_en"
+												maxlength="300" name="desc_en"></textarea>
+										</div>
+									</div>
+
+								</div>
+							</div>
+							<div class="tab-pane" id="tagInfo" style="height: 364px;">
+								<div class="container-fluid">
+									<div class="row" style="margin-top: 2px;">
+										<div class="col-md-5">
+
+
+											<div class="textlabels">
+												<label class="textlabel1">(1)</label> <input type="text"
+													class="form-control textfield" id="tagsinfo1"
+													onclick="callTagListModel(this.id)" />
+
+												<button type="button" onclick="clearTextField('tagsinfo1');">
+													<img class="reset" src="/images/reset.jpg">
+												</button>
+
+											</div>
+
+										</div>
+
+										<div class="col-md-5" style="display: flex;">
+											<label class="textlabel">(2)</label><input type="text"
+												class="form-control textfield" id="tagsinfo2" onclick="callTagListModel(this.id)" />
+											<button type="button" onclick="clearTextField('tagsinfo2');">
+												<img class="reset" src="/images/reset.jpg">
+											</button>
+										</div>
+									</div>
+									<br />
+									<div class="row">
+										<div class="col-md-5" style="display: flex;">
+											<label class="textlabel">(3)</label><input type="text"
+												class="form-control textfield" id="tagsinfo3" onclick="callTagListModel(this.id)" />
+											<button type="button" onclick="clearTextField('tagsinfo3');">
+												<img class="reset" src="/images/reset.jpg">
+											</button>
+										</div>
+										<div class="col-md-5" style="display: flex;">
+											<label class="textlabel">(4)</label><input type="text"
+												class="form-control textfield" id="tagsinfo4" onclick="callTagListModel(this.id)" />
+											<button type="button" onclick="clearTextField('tagsinfo4');">
+												<img class="reset" src="/images/reset.jpg">
+											</button>
+										</div>
+									</div>
+									<br />
+									<div class="row">
+										<div class="col-md-5" style="display: flex;">
+											<label class="textlabel">(5)</label><input type="text"
+												class="form-control textfield" id="tagsinfo5" onclick="callTagListModel(this.id)" />
+											<button type="button" onclick="clearTextField('tagsinfo5');">
+												<img class="reset" src="/images/reset.jpg">
+											</button>
+										</div>
+										<div class="col-md-5" style="display: flex;">
+											<label class="textlabel">(6)</label><input type="text"
+												class="form-control textfield" id="tagsinfo6" onclick="callTagListModel(this.id)" />
+											<button type="button" onclick="clearTextField('tagsinfo6');">
+												<img class="reset" src="/images/reset.jpg">
+											</button>
+										</div>
+									</div>
+									<br />
+									<div class="row" style="margin-bottom: 81px;">
+										<div class="col-md-5" style="display: flex;">
+											<label class="textlabel">(7)</label><input type="text"
+												class="form-control textfield" id="tagsinfo7" onclick="callTagListModel(this.id)" />
+											<button type="button" onclick="clearTextField('tagsinfo7');">
+												<img class="reset" src="/images/reset.jpg">
+											</button>
+										</div>
+										<div class="col-md-5" style="display: flex;">
+											<label class="textlabel">(8)</label><input type="text"
+												class="form-control textfield" id="tagsinfo8" onclick="callTagListModel(this.id)" />
+											<button type="button" onclick="clearTextField('tagsinfo8');">
+												<img class="reset" src="/images/reset.jpg">
+											</button>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div th:replace="form/footer :: footer"></div>						
+					</div>
+				</div>
+				<div class="modal-footer">
+					<div class="row">
+						<div class="footer_save">
+							<button class='btn btn-primary ' id="saveTerm" type="submit">保存</button>
+						</div>
+						<div class="footer_cancel">
+							<button class='btn btn-primary ' id="closeTerm" type="button"
+								onclick="closeGlossaryDataModel()">終了</button>
+						</div>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
+
+
+<div th:replace="form/taglist :: tagList_Fragment"></div>
+<div th:replace="form/tagdata :: tagData_Fragment"></div>
+</html>
